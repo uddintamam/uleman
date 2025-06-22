@@ -1,8 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
+import useSectionAnimation from './useSectionAnimation';
 
 const StoryBoard = ({ storyBoards }) => {
   const [activeStep, setActiveStep] = useState(-1);
   const stepRefs = useRef([]);
+  
+  const [refTitle, animTitle] = useSectionAnimation({
+    delay: 0,
+    direction: 'up',
+  });
 
   const stories = storyBoards.map((story) => ({
     title: story.title,
@@ -37,7 +43,9 @@ const StoryBoard = ({ storyBoards }) => {
 
   return (
     <section className="storyboard-section">
-      <h2 className="storyboard-title">Our Journey</h2>
+      <h2 ref={refTitle} className={`storyboard-title ${animTitle}`}
+        style={{ transitionDuration: '1000ms' }}
+      >Our Journey</h2>
 
       <div className="storyboard-timeline">
         {stories.map((story, idx) => (

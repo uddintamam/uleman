@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@200..800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Niconne&family=Noto+Sans+Math&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Ms+Madi&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=Ms+Madi&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto Sans Math:ital,wght@0,400;0,700;1,400;1,700&family=Ms+Madi&display=swap');
 
 html, body {
-  font-family: 'Andika', sans-serif;
+  font-family: 'Noto Sans Math', sans-serif;
 }
 
 /* RSVP Button override */
@@ -32,7 +32,7 @@ section {
 
 /* Wrapper utama app */
 .app-container {
-  font-family: 'Andika', Tahoma, Geneva, Verdana, sans-serif; /* font-sans */
+  font-family: 'Noto Sans Math', Tahoma, Geneva, Verdana, sans-serif; /* font-sans */
   background-color: #ffffff;  /* bg-white */
   color: #1f2937;             /* text-gray-800 */
   min-height: 100vh;
@@ -97,6 +97,7 @@ body, html {
   background: linear-gradient(120deg, #fffbe9 60%, #fff 100%);
   position: relative;
   overflow: hidden;
+  height: 100vh;
 }
 
 .hero-subtitle {
@@ -106,7 +107,7 @@ body, html {
   margin-top: 0;
 }
 .hero-content {
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .hero-bg {
@@ -139,7 +140,7 @@ body, html {
 }
 
 .hero-section h2 {
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Niconne', cursive;
   font-size: 8rem;
   margin-bottom: 0.2rem;
   margin-top: 0;
@@ -164,7 +165,7 @@ body, html {
   }
   
   .hero-content {
-    padding: 8rem 0;
+    padding: 2rem 0;
   }
 }
 .hero-section p {
@@ -403,7 +404,7 @@ body, html {
 
 /* Container section buku tamu */
 .guestbook-div {
-  background: linear-gradient(90deg, #fffef9 0%, #fef7e5 100%);
+  /* background: linear-gradient(90deg, #fffef9 0%, #fef7e5 100%); */
 }
 
 .guestbook-section {
@@ -411,13 +412,13 @@ body, html {
   padding-bottom: 2.5rem;
   padding-left: 2.5rem;  /* px-6 */
   padding-right: 2.5rem;
-  background: linear-gradient(120deg, #e0f2f1 0%, #fff 100%);
+  background: linear-gradient(120deg, #fffefc 0%, #fff 100%);
   max-width: 36rem;       /* max-w-xl */
   margin-left: auto;
   margin-right: auto;
   border-radius: 0.5rem;  /* rounded-lg */
   box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* shadow-md */
-  /* margin: 2.5rem auto; */
+  margin: 2.5rem auto;
 }
 
 /* Judul buku tamu */
@@ -608,7 +609,7 @@ body, html {
 .verse-section {
   position: relative;
   width: 100%;
-  min-height: 220px;
+  height: 100vh;
   padding: 2rem 0.5rem;
   background: #968574;
   text-align: center;
@@ -647,8 +648,8 @@ body, html {
 
 .verse-content {
   position: relative;
-  background: rgba(255, 255, 255, 0.1); /* semi-transparent */
-  border: 1.5px solid rgba(255, 255, 255, 0.6); /* white translucent frame */
+  background: rgba(41, 35, 35, 0.493); /* semi-transparent */
+  border: 1.5px solid rgba(78, 70, 42, 0.6); /* white translucent frame */
   border-radius: 1.25rem; /* rounded corners */
   backdrop-filter: blur(5px); /* blur effect */
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* soft shadow */
@@ -753,16 +754,16 @@ body, html {
 }
 
 .greeting-title {
-  font-family: 'Dancing Script', cursive;
-  font-size: 2rem;
-  font-weight: 600;
+  font-family: 'Niconne', cursive;
+  font-size: 1.8rem;
+  font-weight: 500;
   color: #2c3e50;
   margin-bottom: 0.5rem;
   line-height: 1.2;
 }
 
 .greeting-description {
-  font-size: 1.1rem;
+  font-size: 1rem;
   color: #374151;
   margin-bottom: 2rem;
 }
@@ -829,7 +830,7 @@ body, html {
 }
 
 .greeting-family-name {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 700;
   color: #166534;
   margin-bottom: 0.5rem;
@@ -878,6 +879,7 @@ body, html {
   padding: 40px 16px; /* Sebelumnya 60px */
   box-sizing: border-box;
   /* max-width: 1200px; */
+  height: 100vh;
   margin: 0 auto;
   border-radius: 8px;
   overflow: hidden;
@@ -903,9 +905,9 @@ body, html {
 }
 
 .event-main-title {
-  font-family: "Dancing Script", cursive;
+  font-family: "Niconne", cursive;
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 500;
   color: #333;
   margin: 0 auto 30px;
   text-align: center;
@@ -998,11 +1000,12 @@ body, html {
 }
 
 .event-counter {
-  font-size: 4rem;
-  font-weight: 900;
+  font-size: 8rem;
+  font-weight: 500;
   color: #d35400;
   line-height: 1;
-  font-family: "Dancing Script", cursive;
+  font-family: "Niconne", cursive;
+  margin-top: -30px;
 }
 
 hr {
@@ -1070,9 +1073,9 @@ hr {
 
 .adab-title {
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 500;
   margin-bottom: 2.5rem;
-  font-family: "Dancing Script", cursive;
+  font-family: "Niconne", cursive;
   color: #14532d;
   letter-spacing: 0.5px;
 }
@@ -1167,7 +1170,7 @@ hr {
   inset: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.322);
+  background: rgba(0, 0, 0, 0.212);
   z-index: 1;
   pointer-events: none;
 }
@@ -1178,27 +1181,32 @@ hr {
   max-width: 400px;
   width: 100%;
   margin: 0 auto;
-  padding: 2rem 1.5rem 2.5rem 1.5rem;
+  padding: 1rem 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100%;
 }
 
 .cover-page-content-tag {
   position: relative;
   z-index: 2;
-  max-width: 300px;
+  max-width: 250px;
   width: 100%;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.39);
+  background: rgba(255, 255, 255, 0.514);
   border-radius: 1.5rem;
   box-shadow: 0 8px 32px rgba(0,0,0,0.18);
   padding: 0.5rem;
-  margin-top: 25rem;
+  /* margin-top: 25rem; */
   display: flex;
   flex-direction: column;
   align-items: center;
   backdrop-filter: blur(2px);
+}
+
+.cover-to {
+  font-size: 0.8rem;
 }
 
 .cover-subtitle {
@@ -1221,18 +1229,26 @@ hr {
   }
 }
 
+.cover-vertical-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Sisakan ruang di tengah */
+  height: 100%; /* atau tinggi tertentu */
+  /* padding: 1px; */
+}
+
 .cover-names-row {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
   /* margin-top: -80px; */
-  margin-bottom: 1.2rem;
+  /* margin-bottom: 1.2rem; */
 }
 .cover-names {
-  font-family: 'Dancing Script', cursive;
-  font-size: 4rem;
-  font-weight: 700;
+  font-family: 'Niconne', cursive;
+  font-size: 3rem;  
+  font-weight: 500;
   color: #ffffff;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.445);
 }
@@ -1250,17 +1266,17 @@ hr {
 }
 
 .cover-message {
-  font-size: 1rem;
-  margin: 1rem 0;
-  padding: 0 10px;
+  font-size: 0.8rem;
+  /* margin: 1rem 0; */
+  /* padding: 0 10px; */
 }
 
 .cover-button {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   background-color: #4caf50;
   color: #fff;
   border: none;
-  padding: 0.5rem 1rem;
+  padding: 0.3rem 0.7rem;
   border-radius: 10px;
   font-size: 1rem;
   cursor: pointer;
@@ -1306,9 +1322,7 @@ hr {
     width: 150px;
     top: -90px;
   }
-  .cover-names {
-    margin-top: -50px;
-  }
+  
 }
 .cover-page-bg {
   background-size: cover;
@@ -1336,7 +1350,7 @@ hr {
   padding: 2.5rem 1rem 2rem 1rem;
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;
-  box-shadow: 0 -2px 16px rgba(22, 101, 52, 0.07);
+  /* box-shadow: 0 -2px 16px rgba(22, 101, 52, 0.07); */
   margin-top: 0;
   text-align: center;
   position: relative;
@@ -1352,7 +1366,7 @@ hr {
   gap: 1.2rem;
 }
 .footer-heading-title {
-  font-family: 'Andika', cursive;
+  font-family: 'Noto Sans Math', sans-serif;
   font-size: 1rem;
   font-weight: 700;
   color: #166534;
@@ -1363,7 +1377,7 @@ hr {
   font-size: 1rem;
   color: #374151;
   margin-bottom: 1.2rem;
-  font-family: 'Andika', sans-serif;
+  font-family: 'Noto Sans Math', sans-serif;
 }
 .footer-social-icons {
   display: flex;
@@ -1448,7 +1462,7 @@ hr {
   gap: 1.2rem;
 }
 .blessing-title {
-  font-family: 'Andika', sans-serif;
+  font-family: 'Noto Sans Math', sans-serif;
   font-size: 1rem;
   font-weight: 500;
   color: #374151;
@@ -1456,9 +1470,9 @@ hr {
   line-height: 1.6;
 }
 .blessing-names {
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Niconne', cursive;
   font-size: 2.5rem;
-  font-weight: 700;
+  font-weight: 500;
   color: #166534;
   margin-top: 0.5rem;
   letter-spacing: 1px;
@@ -1524,7 +1538,7 @@ hr {
   animation: fadeInGiftModal 0.4s;
 }
 .gift-modal-title {
-  font-family: 'Dancing Script', cursive;
+  font-family: 'Niconne', cursive;
   font-size: 2rem;
   color: #166534;
   margin-bottom: 1.2rem;
@@ -1628,7 +1642,7 @@ hr {
   gap: 1.2rem;
 }
 .qrcode-title {
-  font-family: 'Andika', cursive;
+  font-family: 'Noto Sans Math', sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   color: #166534;
@@ -1726,6 +1740,20 @@ hr {
   font-weight: 600;
   color: #166534;
   margin-bottom: 0.3rem;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #1976d2;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1rem;
+  text-transform: uppercase;
 }
 @media (max-width: 640px) {
   .guestbook-pagination {

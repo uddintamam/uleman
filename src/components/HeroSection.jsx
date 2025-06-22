@@ -59,9 +59,9 @@ const HeroSection = ({ weddingInfo, guest }) => {
         </h3>
         <h2 ref={refNames} className={`mt-0 ${animNames}`}
         style={{ transitionDuration: '1500ms' }}>
-          <span className="block font-semibold">{weddingInfo?.groomNickName}</span>
+          <span className="block ">{weddingInfo?.groomNickName}</span>
           <span className="block text-7xl my-2">&</span>
-          <span className="block font-semibold">{weddingInfo?.brideNickName}</span>
+          <span className="block ">{weddingInfo?.brideNickName}</span>
         </h2>
         <p ref={refDate} className={`mt-4 mb-4 ${animDate}`}
         style={{ transitionDuration: '1000ms' }}>

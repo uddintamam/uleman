@@ -12,6 +12,8 @@ export const generateCloudinaryUrl = (publicId, options = {}) => {
     crop,
     gravity,
     effect,
+    colorize, // nilai 0–100
+    color,    // warna seperti 'white', 'black', 'ff0000', dll
     secure = true,
   } = options;
 
@@ -24,6 +26,8 @@ export const generateCloudinaryUrl = (publicId, options = {}) => {
   if (crop) transforms.push(`c_${crop}`);
   if (gravity) transforms.push(`g_${gravity}`);
   if (effect) transforms.push(`e_${effect}`);
+  if (colorize) transforms.push(`e_colorize:${colorize}`);
+  if (color) transforms.push(`co_${color}`);
   if (quality) transforms.push(`q_${quality}`);
   if (format) transforms.push(`f_${format}`);
 

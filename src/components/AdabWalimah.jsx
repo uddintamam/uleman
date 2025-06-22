@@ -35,7 +35,7 @@ const adabList = [
   },
 ];
 
-const AdabWalimah = ({ onGiftClick, guest, weddingInfo }) => {
+const AdabWalimah = ({ guest, weddingInfo, gifts }) => {
   const [refDescription, animDescription] = useSectionAnimation({
     delay: 0,
     direction: 'up',
@@ -68,7 +68,7 @@ const AdabWalimah = ({ onGiftClick, guest, weddingInfo }) => {
           )})}
         </div>
 
-        <RSVPButton onGiftClick={onGiftClick} guest={guest} weddingInfo={weddingInfo}/>
+        <RSVPButton guest={guest} weddingInfo={weddingInfo} gifts={gifts}/>
       </div>
     </section>
   );

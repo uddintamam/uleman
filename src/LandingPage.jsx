@@ -192,45 +192,12 @@ const LandingPage = () => {
               <section ref={sectionRefs[4]}><MapEmbed weddingInfo={weddingInfo} /></section>
               <section><QRCodeSection value={guest?.qrCode || ""} /></section>
               <section ref={sectionRefs[5]}><Gallery storyBoards={storyBoards} /></section>
-              <section ref={sectionRefs[6]}><AdabWalimah onGiftClick={() => setShowGiftModal(true)} guest={guest} /></section>
-              <section ref={sectionRefs[7]}><GuestBook guest={guest} guestComments={guestComments} /></section>
-              <section ref={sectionRefs[8]}><BlessingText weddingInfo={weddingInfo} /></section>
+              <section ref={sectionRefs[6]}><AdabWalimah guest={guest} weddingInfo={weddingInfo} gifts={gifts}/></section>
+              <section ref={sectionRefs[7]}><BlessingText weddingInfo={weddingInfo} /></section>
+              <section ref={sectionRefs[8]}><GuestBook guest={guest} guestComments={guestComments} /></section>
               <section ref={footerRef}><Footer weddingInfo={weddingInfo} /></section>
             </div>
             
-            {showGiftModal && (
-              <div
-                className="gift-modal-overlay"
-                style={{ zIndex: 2147483647, position: 'fixed' }}
-                onClick={() => setShowGiftModal(false)}
-              >
-                <div
-                  className="gift-modal"
-                  style={{ zIndex: 2147483647, position: 'relative' }}
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  <button
-                    className="gift-modal-close"
-                    onClick={() => setShowGiftModal(false)}
-                    aria-label="Tutup"
-                  >
-                    &times;
-                  </button>
-
-                  <h3 className="gift-modal-title">Kirim Hadiah</h3>
-
-                  <div className="gift-card-list">
-                    {gifts?.map((gift, index) => (
-                      <div key={index} className="gift-card">
-                        <div className="gift-bank">{gift.bankName}</div>
-                        <div className="gift-norek">{gift.accountNumber}</div>
-                        <div className="gift-name">a.n {gift.accountName}</div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            )}
           </>
         )}
           <MusicPlayer

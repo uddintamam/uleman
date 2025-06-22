@@ -3,8 +3,20 @@ import { QRCodeSVG } from "qrcode.react";
 import useSectionAnimation from "./useSectionAnimation";
 
 const QRCodeSection = ({ value }) => {
-  const [ref, animClass] = useSectionAnimation();
-
+  
+    const [refTitle, animTitle] = useSectionAnimation({
+      delay: 0,
+      direction: 'up',
+    });
+    const [refSubTitle, animSubTitle] = useSectionAnimation({
+      delay: 800,
+      direction: 'up',
+    });
+    
+    const [refQrCode, animQrCode] = useSectionAnimation({
+      delay: 1500,
+      direction: 'blur',
+    });
   const handleDownload = () => {
     const svg = ref.current.querySelector('svg');
     if (!svg) return;
@@ -22,11 +34,15 @@ const QRCodeSection = ({ value }) => {
   };
 
   return (
-    <section ref={ref} className={`qrcode-section ${animClass}`}>
+    <section className={`qrcode-section`}>
       <div className="qrcode-container">
-        <h2 className="qrcode-title">QR Code Tamu</h2>
-        <p className="qrcode-desc">Tunjukkan QR ini saat hadir ke resepsi.</p>
-        <div className="qrcode-box">
+        <h2 ref={refTitle}  className={`qrcode-title ${animTitle}`}
+          style={{ transitionDuration: '1000ms' }}
+        >QR Code Tamu</h2>
+        <p ref={refSubTitle} className={`qrcode-desc ${animSubTitle}`}
+          style={{ transitionDuration: '1000ms' }}>Tunjukkan QR ini saat hadir ke resepsi.</p>
+        <div ref={refQrCode} className={`qrcode-box ${animQrCode}`}
+          style={{ transitionDuration: '1000ms' }}>
           <QRCodeSVG value={value} size={300} bgColor="#fff" fgColor="#166534" level="H" includeMargin={true} />
         </div>
         <button className="qrcode-download-btn" onClick={handleDownload} type="button">Download QR Code</button>

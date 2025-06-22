@@ -4,7 +4,10 @@ import { getGuests, postGuest, postGuestComment } from '../api';
 import useSectionAnimation from './useSectionAnimation';
 
 const GuestBook = ({ guest, guestComments }) => {
-  const [ref, animClass] = useSectionAnimation();
+  const [ref, animClass] = useSectionAnimation({
+    delay: 0,
+    direction: 'up',
+  });
   const [comment, setComment] = React.useState('');
   const [msg, setMsg] = React.useState('');
   const [page, setPage] = React.useState(1);
@@ -28,7 +31,8 @@ const GuestBook = ({ guest, guestComments }) => {
   // Tampilkan ucapan dari guestComments
   return (
     <div className='guestbook-div'>
-      <section ref={ref} className={`guestbook-section ${animClass}`}>
+      <section ref={ref} className={`guestbook-section ${animClass}`}
+       style={{ transitionDuration: '1000ms' }}>
         <h2>Ucapan</h2>
         <form onSubmit={handleSubmit} className="guestbook-form" style={{marginBottom: 16}}>
           <textarea
@@ -46,15 +50,31 @@ const GuestBook = ({ guest, guestComments }) => {
           {pagedComments.length === 0 && (
             <div className="guestbook-empty">Belum ada ucapan.</div>
           )}
-          {pagedComments.map((cmnt, idx) => (
-            <div key={idx} className="guestbook-item">
-              <div className="guestbook-name">{cmnt.Guest?.name || 'Tamu'}</div>
-              <div className="guestbook-message">{cmnt.comment}</div>
-              <div className="guestbook-date" style={{fontSize: '0.85em', color: '#888'}}>
-                {cmnt.createdAt ? new Date(cmnt.createdAt).toLocaleString('id-ID', { day: '2-digit', month: 'short', year: 'numeric', hour: '2-digit', minute: '2-digit' }) : ''}
+          {pagedComments.map((cmnt, idx) => {
+            const name = cmnt.Guest?.name || 'Tamu';
+            const initials = name.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase();
+
+            return (
+              <div key={idx} className="guestbook-item" style={{ display: 'flex', gap: '12px', marginBottom: '1rem' }}>
+                <div className="avatar">{initials}</div>
+                <div>
+                  <div className="guestbook-name" style={{ fontWeight: 'bold' }}>{name}</div>
+                  <div className="guestbook-message">{cmnt.comment}</div>
+                  <div className="guestbook-date" style={{ fontSize: '0.85em', color: '#888' }}>
+                    {cmnt.createdAt
+                      ? new Date(cmnt.createdAt).toLocaleString('id-ID', {
+                          day: '2-digit',
+                          month: 'short',
+                          year: 'numeric',
+                          hour: '2-digit',
+                          minute: '2-digit',
+                        })
+                      : ''}
+                  </div>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
         <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginTop: 12 }}>
           <button onClick={() => setPage(p => Math.max(1, p - 1))} disabled={page === 1}>Prev</button>

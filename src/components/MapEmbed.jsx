@@ -6,10 +6,6 @@ const MapEmbed = ({ weddingInfo }) => {
     delay: 0,
     direction: 'up',
   });
-  const [refMap, animMap] = useSectionAnimation({
-    delay: 500,
-    direction: 'up',
-  });
   const [refVanue, animVanue] = useSectionAnimation({
     delay: 1000,
     direction: 'up',
@@ -21,20 +17,18 @@ const MapEmbed = ({ weddingInfo }) => {
 
   return (
     <section
-      className={`location-section py-10 px-4 max-w-4xl mx-auto text-center`}
+          ref={refTitle}
+      className={`location-section py-10 px-4 max-w-4xl mx-auto text-center ${animTitle}`}
+          style={{ transitionDuration: '1000ms' }}
     >
       <h2 
-          ref={refTitle}
-      className={`text-3xl font-bold text-green-800 mb-2 font-serif ${animTitle}`}
-          style={{ transitionDuration: '1000ms' }}
+      className={`text-3xl font-bold text-green-800 mb-2 font-serif `}
           >
         Lokasi Acara
       </h2>
 
       <div 
-          ref={refMap}
-          className={`location-container flex items-center justify-center ${animMap}`}
-          style={{ transitionDuration: '1000ms' }}>
+          className={`location-container flex items-center justify-center`}>
         {weddingInfo?.mapUrl && (
           <div
             className="w-full max-w-3xl aspect-video rounded-xl overflow-hidden shadow-md border border-gray-200"
@@ -44,15 +38,11 @@ const MapEmbed = ({ weddingInfo }) => {
       </div>
       
       <h3 
-          ref={refVanue}
-          className={`text-lg text-gray-700 font-medium mt-4 ${animVanue}`}
-          style={{ transitionDuration: '1000ms' }}>
+          className={`text-lg text-gray-700 font-medium mt-4`}>
         <b>{weddingInfo?.venue}</b>
       </h3>
       <p 
-      ref={refAddress}
-      className={`text-sm text-gray-600 mb-6 ${animAddress}`}
-          style={{ transitionDuration: '1000ms' }}>{weddingInfo?.address}</p>
+      className={`text-sm text-gray-600 mb-6`}>{weddingInfo?.address}</p>
     </section>
   );
 };

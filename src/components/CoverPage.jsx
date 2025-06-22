@@ -23,29 +23,30 @@ const CoverPage = ({ onOpen, guest, weddingInfo }) => {
 
       <div className="cover-page-overlay" />
       <div className="cover-page-content">
-        <h3 className="cover-subtitle" style={{ fontSize: 36 }}>Walimatul 'urs</h3>
-        <div className="cover-photo-container">
+        <div className='cover-vertical-layout'>
+        <div>
+          <h3 className="cover-subtitle" style={{ fontSize: 36 }}>Walimatul 'urs</h3>
+          <div className="cover-names-row">
+            <span className="cover-names">{weddingInfo?.groomNickName + ' & ' + weddingInfo?.brideNickName}</span>
+          </div>
+        </div>
+        <div>
+          <div className="cover-page-content-tag">
+            <p className="cover-to">Kepada <br/>
+              Yth Bapak/Ibu/Saudara/i
+            </p>
+              <h3 className="cover-recipient" style={{ fontSize: 20, fontWeight: 600 }} id="kpd">{guest ? (guest.greeting ? guest.greeting + ' ' + guest.name : guest.name) : 'Tamu Undangan'}</h3>
+          
+            <p className="cover-message">di {guest?.address ?? 'Tempat'}
+            </p>
+          </div>
+          <button className="cover-button" onClick={handleOpen} disabled={fadeOut}>
+            <i className="fa fa-envelope"></i> Terima Undangan
+          </button>
+        </div>
 
         </div>
-        <div className="cover-names-row">
-          <span className="cover-names">{weddingInfo?.groomNickName + ' & ' + weddingInfo?.brideNickName}</span>
-        </div>
-        <div className="cover-page-content-tag">
-<p className="cover-to">Kepada <br/>
-          Yth Bapak/Ibu/Saudara/i
-        </p>
-        <h3 className="cover-recipient" style={{ fontSize: 24, fontWeight: 600 }} id="kpd">{guest ? (guest.greeting ? guest.greeting + ' ' + guest.name : guest.name) : 'Tamu Undangan'}</h3>
        
-        <p className="cover-message">di {guest?.address ?? 'Tempat'}
-        </p>
-        </div>
-        
-        
-        {/* <p className="cover-message p-4">Tanpa mengurangi rasa hormat, <br/>kami mengundang untuk hadir di acara pernikahan kami
-        </p> */}
-        <button className="cover-button" onClick={handleOpen} disabled={fadeOut}>
-          <i className="fa fa-envelope"></i> Terima Undangan
-        </button>
       </div>
     </section>
   );
