@@ -59,14 +59,16 @@ const VerseSection = () => {
     alt="left decoration"
     className={`event-detail-bg event-detail-bg-left ${animBgRight} `}
     loading="lazy"
-    style={{ transitionDuration: '1500ms' }}
+    style={{ transitionDuration: '1500ms' ,
+    opacity: 0.5}}
   />
   <img 
     ref={refbgRight}
     src={bgLeftUrl} 
     alt="right decoration" 
     className={`event-detail-bg event-detail-bg-right ${animBgLeft} `} 
-    style={{ transitionDuration: '1500ms' }}
+    style={{ transitionDuration: '1500ms' ,
+    opacity: 0.5}}
     />
 </section>
   );

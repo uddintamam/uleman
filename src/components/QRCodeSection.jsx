@@ -17,6 +17,8 @@ const QRCodeSection = ({ value }) => {
       delay: 1500,
       direction: 'blur',
     });
+
+    
   const handleDownload = () => {
     const svg = ref.current.querySelector('svg');
     if (!svg) return;

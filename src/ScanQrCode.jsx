@@ -53,18 +53,18 @@ useEffect(() => {
   };
 
   const startScan = async () => {
-    if (!selectedDeviceId || !videoRef.current) return;
+    if (!videoRef.current) return;
 
     const reader = new BrowserMultiFormatReader();
     codeReaderRef.current = reader;
 
     try {
-      await new Promise((resolve) => setTimeout(resolve, 200)); // delay untuk memastikan kamera siap
-
       setScanning(true);
 
+      await new Promise((resolve) => setTimeout(resolve, 200));
+
       reader.decodeFromVideoDevice(
-        selectedDeviceId,
+        selectedDeviceId || undefined,
         videoRef.current,
         async (result, err) => {
           if (cancelled) return;
@@ -110,7 +110,15 @@ useEffect(() => {
 
       setScannerReady(true);
     } catch (err) {
-      setError('Gagal mengakses kamera: ' + err.message);
+      console.error('Gagal akses kamera:', err);
+
+      if (err.name === 'NotAllowedError') {
+        setError('Akses kamera ditolak. Harap izinkan akses kamera.');
+      } else if (err.name === 'NotFoundError') {
+        setError('Tidak ditemukan kamera aktif di perangkat.');
+      } else {
+        setError('Gagal mengakses kamera: ' + err.message);
+      }
     }
   };
 
@@ -151,6 +159,22 @@ useEffect(() => {
     }
   }, [snackbar.open]);
 
+  useEffect(() => {
+    BrowserMultiFormatReader.listVideoInputDevices()
+      .then(devices => {
+        if (devices.length === 0) {
+          setError('Tidak ada kamera yang terdeteksi di perangkat ini.');
+        } else {
+          setVideoInputDevices(devices);
+          setSelectedDeviceId(devices[0].deviceId);
+        }
+      })
+      .catch(err => {
+        console.error('Gagal mendapatkan daftar kamera:', err);
+        setError('Gagal mendapatkan daftar kamera. Pastikan izin kamera diaktifkan.');
+      });
+  }, []);
+
   return (
     <div style={{ maxWidth: 400, margin: '10px auto', padding: 24 }}>
       <h2>Scan QR Code Tamu</h2>
@@ -160,7 +184,7 @@ useEffect(() => {
       >
         &larr; Kembali ke Admin Panel
       </button>
-      {videoInputDevices.length > 1 && (
+      {videoInputDevices.length > 1 ? (
         <div style={{ marginBottom: 12 }}>
           <label htmlFor="camera-select">Pilih Kamera: </label>
           <select
@@ -174,7 +198,11 @@ useEffect(() => {
             ))}
           </select>
         </div>
-      )}
+      ): (
+          <div style={{ color: 'red', marginTop: 16 }}>
+            Tidak ada kamera terdeteksi. Coba gunakan browser lain atau cek izin akses kamera.
+          </div>
+        )}
       <video ref={videoRef} style={{ width: '100%', borderRadius: 8, background: '#222' }} autoPlay playsInline />
       {scanning && <div style={{ marginTop: 8 }}>Mencari QR code...</div>}
       {result && <div style={{ marginTop: 12 }}>QR: {result}</div>}

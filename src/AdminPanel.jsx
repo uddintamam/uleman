@@ -306,7 +306,7 @@ const AdminPanel = ({ token }) => {
   };
 
   const handleShare = (guest) => {
-    navigator.clipboard.writeText(window.location.origin + '/guest/' + guest.qrCode);
+    navigator.clipboard.writeText(window.location.origin + '?' + guest.qrCode);
     setSnackbar({ open: true, message: 'Link undangan disalin!', color: '#2563eb' });
   };
 

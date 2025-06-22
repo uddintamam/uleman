@@ -2,28 +2,28 @@ import { generateCloudinaryUrl } from "../api";
 import useSectionAnimation from "./useSectionAnimation";
 
 const GreetingSection = ({ guest, infoPerson }) => {
-    const bgRightUrl = generateCloudinaryUrl('hero-bg-left-C9B78PQK_tmppjp', {
-    effect: 'grayscale',
-    colorize: 100,
-    color: 'brown',
-  });
-    const bgLeftUrl = generateCloudinaryUrl('hero-bg-right-B2cD6PeK_cjrt7h', {
-    effect: 'grayscale',
-    colorize: 100,
-    color: 'brown',
-  });
+  //   const bgRightUrl = generateCloudinaryUrl('hero-bg-left-C9B78PQK_tmppjp', {
+  //   effect: 'grayscale',
+  //   colorize: 100,
+  //   color: 'brown',
+  // });
+  //   const bgLeftUrl = generateCloudinaryUrl('hero-bg-right-B2cD6PeK_cjrt7h', {
+  //   effect: 'grayscale',
+  //   colorize: 100,
+  //   color: 'brown',
+  // });
 
   
   
-  const [refbgLeft, animBgLeft, showWavingLeft] = useSectionAnimation({
-    delay: 0,
-    direction: 'left',
-  });
+  // const [refbgLeft, animBgLeft, showWavingLeft] = useSectionAnimation({
+  //   delay: 0,
+  //   direction: 'left',
+  // });
 
-  const [refbgRight, animBgRight, showWavingRight] = useSectionAnimation({
-    delay: 0,
-    direction: 'right',
-  });
+  // const [refbgRight, animBgRight, showWavingRight] = useSectionAnimation({
+  //   delay: 0,
+  //   direction: 'right',
+  // });
 
   const [refBismillah, animBismillah] = useSectionAnimation({
     delay: 0,
@@ -108,7 +108,7 @@ const GreetingSection = ({ guest, infoPerson }) => {
         </div>
       </div>
       
-    <img
+    {/* <img
       ref={refbgLeft}
       src={bgRightUrl}
       alt="left decoration"
@@ -122,7 +122,7 @@ const GreetingSection = ({ guest, infoPerson }) => {
       alt="right decoration" 
       className={`event-detail-bg event-detail-bg-right ${animBgLeft} `} 
       style={{ transitionDuration: '1500ms' }}
-      />
+      /> */}
     </section>
   );
 };
