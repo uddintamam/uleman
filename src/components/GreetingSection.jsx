@@ -47,6 +47,14 @@ const GreetingSection = ({ guest, infoPerson }) => {
       direction: 'blur',
     })
   );
+  
+  const bgflowerUrl = generateCloudinaryUrl('flower_g8utdo');
+  const greetingBgFrame = infoPerson.map((_, idx) =>
+    useSectionAnimation({
+      delay: 250 + idx * 400, // animasi berurutan
+      direction: 'zoom',
+    })
+  );
 
   return (
     <section className={`greeting-section`}>
@@ -78,6 +86,7 @@ const GreetingSection = ({ guest, infoPerson }) => {
         <div className="greeting-profile-wrapper">
           {infoPerson.map((story, idx) => {
             const [ref, anim] = greetingProfiles[idx];
+            const [refBgFrm, animBgFrm, showWavingFrm] = greetingBgFrame[idx];
             return (
               <div
                 key={idx}
@@ -85,11 +94,19 @@ const GreetingSection = ({ guest, infoPerson }) => {
                 className={`greeting-profile ${anim}`}
                 style={{ transitionDuration: '1500ms' }}
               >
-                <img
-                  src={story.pic}
-                  alt={story.name || 'Mempelai Pria'}
-                  className="greeting-profile-image"
-                />
+               <div ref={refBgFrm} className={`greeting-profile-frame ${animBgFrm}`}
+                  tyle={{ transitionDuration: '1000ms' }}>
+                  <img
+                    src={bgflowerUrl}
+                    alt="Frame Bunga"
+                    className={`greeting-frame-bg ${showWavingFrm ? 'waving-leaf waving-delay-' + (idx + 1) : ''}`}
+                  />
+                  <img
+                    src={story.pic}
+                    alt={story.name || 'Mempelai Pria'}
+                    className="greeting-profile-image"
+                  />
+                </div>
                 <div className="greeting-family">
                   <h3 className="greeting-family-name">{story.name}</h3>
                   <p className="greeting-family-desc">

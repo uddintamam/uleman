@@ -1,6 +1,7 @@
 import React from 'react';
 import useSectionAnimation from './useSectionAnimation';
 
+
 const MapEmbed = ({ weddingInfo }) => {
   const [refTitle, animTitle] = useSectionAnimation({
     delay: 0,
@@ -28,10 +29,10 @@ const MapEmbed = ({ weddingInfo }) => {
       </h2>
 
       <div 
-          className={`location-container flex items-center justify-center`}>
+          className={`location-container-map flex items-center justify-center`}>
         {weddingInfo?.mapUrl && (
           <div
-            className="w-full max-w-3xl aspect-video rounded-xl overflow-hidden shadow-md border border-gray-200"
+            className="max-w-3xl aspect-video rounded-xl overflow-hidden shadow-md border border-gray-200"
             dangerouslySetInnerHTML={{ __html: weddingInfo.mapUrl }}
           />
         )}
@@ -43,6 +44,7 @@ const MapEmbed = ({ weddingInfo }) => {
       </h3>
       <p 
       className={`text-sm text-gray-600 mb-6`}>{weddingInfo?.address}</p>
+
     </section>
   );
 };

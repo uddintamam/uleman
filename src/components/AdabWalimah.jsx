@@ -44,8 +44,8 @@ const AdabWalimah = ({ guest, weddingInfo, gifts }) => {
   // Buat animasi terpisah untuk tiap profile
   const adabs = adabList.map((_, idx) =>
     useSectionAnimation({
-      delay: 150 + idx * 400, // animasi berurutan
-      direction: 'up',
+      delay: 150 + idx * 100, // animasi berurutan
+      direction: 'zoom',
     })
   );
 
@@ -61,7 +61,7 @@ const AdabWalimah = ({ guest, weddingInfo, gifts }) => {
             <div 
                 ref={ref}
                 key={index} className={`adab-item ${anim}`}
-                style={{ transitionDuration: '1500ms' }}>
+                style={{ transitionDuration: '1000ms' }}>
               <img src={item.img} alt={item.alt} className="adab-icon" />
               <p className="adab-desc">{item.desc}</p>
             </div>

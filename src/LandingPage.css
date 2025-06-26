@@ -102,6 +102,7 @@ body, html {
 
 .hero-subtitle {
   font-family: 'Ms Madi', cursive;
+  font-size: 3.5rem;
   font-weight: 500;
   margin-bottom: 0.2rem;
   margin-top: 0;
@@ -283,10 +284,17 @@ body, html {
 
 /* Section lokasi acara */
 .location-section {
-  padding-bottom: 2.5rem;
-  padding-left: 1rem;   /* px-4 */
-  padding-right: 1rem;
   text-align: center;
+  /* height: 100vh; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.location-container-map {
+  padding-bottom: 2.5rem;
+  width: 100%;
 }
 
 .location-section h2 {
@@ -610,7 +618,7 @@ body, html {
   position: relative;
   width: 100%;
   height: 100vh;
-  padding: 2rem 0.5rem;
+  /* padding: 2rem 0.5rem; */
   background: #968574;
   text-align: center;
   box-sizing: border-box;
@@ -644,61 +652,101 @@ body, html {
   backdrop-filter: blur(4px); */
   z-index: -10;
   pointer-events: none;
+  overflow: hidden; /* ⛔ cegah bg keluar batas */
+  padding: 0; /* jangan tambahkan padding di sini */
 }
 
-.verse-content {
+.verse-frame-wrapper {
   position: relative;
-  background: rgba(41, 35, 35, 0.493); /* semi-transparent */
-  border: 1.5px solid rgba(78, 70, 42, 0.6); /* white translucent frame */
-  border-radius: 1.25rem; /* rounded corners */
-  backdrop-filter: blur(5px); /* blur effect */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* soft shadow */
-  padding: 2rem 1rem;
-  z-index: 2;
-  transition: all 0.4s ease;
-
-  
+  width: 100%;
+  max-width: 600px;
+  aspect-ratio: 1 / 1;
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: transparent;
 }
 
-@media (min-width: 480px) {
-  .verse-content {
-    max-width: 32rem;
-    padding: 0 1rem;
-    padding: 2.25rem 8rem;
-  }
+/* Background image as frame */
+.verse-content-frame {
+  position: absolute;
+  inset: 0;
+  background-image: url("https://res.cloudinary.com/dpysdqing/image/upload/v1750819371/frame-verse2_riy3gb.png");
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+  transform: scale(1.2);
 }
 
-@media (min-width: 640px) {
-  .verse-content {
-    max-width: 40rem;
-    padding: 0 2rem;
-    padding: 2.5rem 8rem;
-  }
-}
-
-@media (min-width: 1024px) {
-  .verse-content {
-    max-width: 48rem;
-    /* padding: 0 0; */
-  }
+/* Teks benar-benar rata tengah */
+.verse-inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* ✅ posisi tengah sempurna */
+  width: 65%;
+  max-width: 85%;
+  padding: 1.5rem;
+  text-align: center;
+  color: white;
+  z-index: 1;
+  /* backdrop-filter: blur(3px);
+  background-color: rgba(0, 0, 0, 0.25); */
+  border-radius: 1rem;
+  box-sizing: border-box;
 }
 
 .verse-text {
-  font-size: 1.0rem; /* default mobile */
+  font-size: 1rem;
+  line-height: 1.6;
   font-weight: 500;
-  line-height: 1.75rem;
-  color: #ffffff; /* text-gray-700 */
+  margin-bottom: 1rem;
+  color: #968574;
 }
 
-@media (min-width: 480px) {
+.verse-source {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #968574;
+}
+
+/* ✅ Responsive */
+@media (max-width: 640px) {
+  .verse-frame-wrapper {
+    width: 100%;
+    max-width: 640px;
+  }
+
+  .verse-content-frame {
+    transform: scale(1.2);
+  }
+
+  .verse-inner {
+    width: 65%;
+    padding: 1rem;
+  }
+
   .verse-text {
-    font-size: 1.0rem;
+    margin-top: -0.8rem;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    margin-bottom: 0rem;
+  }
+
+  .verse-source {
+    font-size: 0.875rem;
+  }
+}
+
+/* @media (min-width: 480px) {
+  .verse-text {
+    font-size: 0.8rem;
   }
 }
 
 @media (min-width: 640px) {
   .verse-text {
-    font-size: 1.0rem;
+    font-size: 0.7rem;
   }
 }
 
@@ -706,14 +754,7 @@ body, html {
   .verse-text {
     font-size: 1.25rem;
   }
-}
-
-.verse-source {
-  font-size: 1.5rem; /* text-lg */
-  font-weight: 600;
-  color: #cecece; /* text-green-700 */
-}
-
+} */
 
 /* Greeting Section Styles */
 .greeting-section {
@@ -793,13 +834,33 @@ body, html {
   filter: blur(0);
 }
 
+.greeting-profile-frame {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.greeting-frame-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 240px;
+  z-index: 1;
+}
+
 .greeting-profile-image {
-  width: 140px;
-  height: 140px;
+  width: 180px;
+  height: 180px;
   border-radius: 9999px;
   object-fit: cover;
   border: 4px solid #fff;
   box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 2;
 }
 
 .greeting-name-mobile {
@@ -821,19 +882,20 @@ body, html {
 .greeting-family {
   background: #f9fafb;
   border-radius: 1rem;
-  padding: 1.5rem 1rem;
+  padding: 1rem;
   min-width: 220px;
   max-width: 320px;
-  margin-bottom: 1rem;
+  /* margin-bottom: 1rem; */
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
 }
 
 .greeting-family-name {
   font-size: 1rem;
   font-weight: 700;
   color: #166534;
-  margin-bottom: 0.5rem;
+  /* margin-top: 0.5rem;
+  margin-bottom: 0.5rem; */
 }
 
 .greeting-family-desc {
@@ -859,17 +921,22 @@ body, html {
   display: block;
 }
 
-@media (min-width: 600px) {
+@media (max-width: 600px) {
   .greeting-profile-image {
-    width: 180px;
-    height: 180px;
+    width: 160px;
+    height: 160px;
   }
   .greeting-bismillah {
     max-width: 320px;
   }
 
   .greeting-family {
-    margin-top: 2.5rem;
+    margin-top: 0.5rem;
+  }
+
+  .greeting-profile-frame {
+    width: 230px;
+    height: 230px;
   }
 }
 
@@ -884,6 +951,11 @@ body, html {
   border-radius: 8px;
   overflow: hidden;
   z-index: 1;
+  
+  display: flex;
+  align-items: center;        /* vertikal tengah */
+  justify-content: center;    /* horizontal tengah */
+  flex-direction: column;
   /* background: linear-gradient(120deg, #fffbe9 0%, #fff 100%); */
 }
 
@@ -901,6 +973,7 @@ body, html {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 200vh;
   /* gap: 10px; */
 }
 
@@ -986,10 +1059,13 @@ body, html {
   .event-column-right h3 {
     text-align: center;
   }
-
-  .event-inner-section {
-  width: 60%; /* pastikan melebar sesuai container */
-}
+  .event-container {
+    width: 50vh;
+    /* gap: 10px; */
+  }
+    .event-inner-section {
+    width: 60%; /* pastikan melebar sesuai container */
+  }
 }
 
 .event-column-right hr {
@@ -1212,10 +1288,10 @@ hr {
 .cover-subtitle {
   font-family: 'Ms Madi', cursive;
   color: #ffffff;
-  font-weight: 400;
+  font-weight: 550;
   margin-bottom: 0.2rem;
-  margin-top: 0;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.445);
+  /* margin-top: 4rem; */
+  text-shadow: 0 5px 10px rgba(0, 0, 0, 0.445);
 }
 
 @media (max-width: 640px) {
@@ -1234,7 +1310,7 @@ hr {
   flex-direction: column;
   justify-content: space-between; /* Sisakan ruang di tengah */
   height: 100%; /* atau tinggi tertentu */
-  /* padding: 1px; */
+  padding: 2rem 2px;
 }
 
 .cover-names-row {
@@ -1247,10 +1323,11 @@ hr {
 }
 .cover-names {
   font-family: 'Niconne', cursive;
-  font-size: 3rem;  
+  font-size: 4rem;  
   font-weight: 500;
   color: #ffffff;
   text-shadow: 0 2px 8px rgba(0, 0, 0, 0.445);
+  line-height: 1.2;
 }
 .cover-names-flower {
   display: inline-block;
@@ -1625,17 +1702,23 @@ hr {
 
 /* QR Code Section Styling */
 .qrcode-section {
-  background: linear-gradient(120deg, #fffbe9 60%, #fff 100%);
-  padding: 2.5rem 1rem 2.5rem 1rem;
+  display: flex;
+  align-items: center;        /* vertikal tengah */
+  justify-content: center;    /* horizontal tengah */
+  flex-direction: column;
+  /* height: 100vh; */
+}
+.qrcode-container {
+    background: linear-gradient(120deg, #fffbe9 60%, #fff 100%);
+  padding: 3rem;
   text-align: center;
   border-radius: 1.5rem;
   box-shadow: 0 2px 16px rgba(22, 101, 52, 0.07);
   margin: 2.5rem auto 0 auto;
-  max-width: 420px;
+  /* max-width: 420px; */
   position: relative;
   z-index: 2;
-}
-.qrcode-container {
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1663,10 +1746,12 @@ hr {
   justify-content: center;
 }
 @media (max-width: 640px) {
-  .qrcode-section {
-    padding: 1.2rem 0.5rem 1.2rem 0.5rem;
+  .qrcode-container {
+    padding: 1.2rem;
     border-radius: 1rem;
     max-width: 98vw;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
   }
   .qrcode-title {
     font-size: 1.1rem;

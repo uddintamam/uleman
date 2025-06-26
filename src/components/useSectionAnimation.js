@@ -2,14 +2,14 @@ import { useEffect, useRef, useState } from 'react';
 
 export default function useSectionAnimation({
   delay = 0,
-  direction = 'up', // 'up' | 'down' | 'left' | 'right' | 'blur' | 'none'
+  direction = 'up', // 'up' | 'down' | 'left' | 'right' | 'blur' | 'zoom' | 'none'
   opacity = true,
   once = true,
 } = {}) {
   const ref = useRef(null);
   const [hasAppeared, setHasAppeared] = useState(false);
 
-const baseTransition = `transition-all ease-out`;
+  const baseTransition = `transition-all duration-700 ease-out`;
 
   const getInitialClass = () => {
     let classes = [];
@@ -31,6 +31,9 @@ const baseTransition = `transition-all ease-out`;
       case 'blur':
         classes.push('blur-sm');
         break;
+      case 'zoom':
+        classes.push('scale-50');
+        break;
       default:
         break;
     }
@@ -51,6 +54,9 @@ const baseTransition = `transition-all ease-out`;
     }
     if (direction === 'blur') {
       classes.push('blur-0');
+    }
+    if (direction === 'zoom') {
+      classes.push('scale-100');
     }
 
     classes.push(baseTransition);

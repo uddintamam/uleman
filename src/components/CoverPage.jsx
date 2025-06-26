@@ -14,7 +14,6 @@ const CoverPage = ({ onOpen, guest, weddingInfo }) => {
 
   
   const bgUrl = generateCloudinaryUrl('cover-BG-DG78Gr88_fsyjoq');
-  const bgflowerUrl = generateCloudinaryUrl('flower-Cos0fPk-_cjwgua');
   return (
     <section className={`cover-page cover-page-bg${fadeOut ? ' cover-page-fadeout' : ''}`}
       style={{

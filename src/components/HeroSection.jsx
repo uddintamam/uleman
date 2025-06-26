@@ -52,7 +52,7 @@ const HeroSection = ({ weddingInfo, guest }) => {
       <div className="hero-content text-center z-10 relative">
         <h3
           ref={refSubtitle}
-          className={`hero-subtitle mb-2 text-[48px] font-semibold ${animSubtitle}`}
+          className={`hero-subtitle mb-2 ${animSubtitle}`}
           style={{ transitionDuration: '1000ms' }}
         >
           Walimatul 'urs
